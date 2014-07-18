@@ -38,3 +38,26 @@ def find_chars2(string1, string2):
     """
     return ''.join([c for c in string1 if c in set(string2)])
 
+
+#+----------------------------------------------------------------------------+
+#| Programming Question 2:
+#| Write a function that takes as input a sorted array and modifies the array 
+#| to compact it, removing duplicates. Also return the new length of the array.
+#| Notes: The input array might be very large.
+#| For example:
+#|    input array = [1, 3, 7, 7, 8, 9, 9, 9, 10]
+#|    transformed array = [1, 3, 7, 8, 9, 10]
+#|    size = 6
+#+----------------------------------------------------------------------------+
+def compact(array):
+    prev = array[0]
+    
+    idx = 1
+    while (idx < len(array)):
+        if prev == array[idx]:
+            del array[idx]
+        else:
+            prev = array[idx]
+            idx += 1
+    return len(array)
+
