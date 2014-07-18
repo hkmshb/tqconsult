@@ -56,6 +56,20 @@ class Test(unittest.TestCase):
         self.assertListEqual(result, expected)
     
     
+    @unpack
+    @data([[1,2,3,4,5,6],  0, [1,2,3,4,5,6]],
+          [[1,2,3,4,5,6],  1, [6,1,2,3,4,5]],
+          [[1,2,3,4,5,6],  2, [5,6,1,2,3,4]],
+          [[1,2,3,4,5,6],  3, [4,5,6,1,2,3]],
+          [[1,2,3,4,5,6],  4, [3,4,5,6,1,2]],
+          [[1,2,3,4,5,6],  5, [2,3,4,5,6,1]],
+          [[1,2,3,4,5,6],  6, [1,2,3,4,5,6]],
+          [[1,2,3,4,5,6], -2, [5,6,1,2,3,4]],)
+    def test_rotate(self, array, npos, expected):
+        result = solutions.rotate(array, npos)
+        self.assertListEqual(result, expected)
+    
+    
     
 if __name__ == "__main__":
     unittest.main()

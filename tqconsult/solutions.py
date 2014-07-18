@@ -90,3 +90,29 @@ def tokenize_string2(input_string, delimiter_list):
         buff = []
     return tknz
 
+
+#+----------------------------------------------------------------------------+
+#| Programming Question 4: Rotating an Array in Python
+#| Write a function that takes an array of integers and returns that array 
+#| rotated by N positions. For example, if N=2, given the input array 
+#| [1, 2, 3, 4, 5, 6] the function should return [5, 6, 1, 2, 3, 4]
+#+----------------------------------------------------------------------------+
+def rotate(array, npos):
+    """
+    Rotates the provided array by the number of position specified in npos.
+    """
+    if len(array):
+        # ensure npos is positive & not greater than array length
+        npos = abs(npos) % len(array)
+        if npos:
+            chunk = array[-npos:]
+            del array[-npos:]
+            
+            chunk.reverse()
+            for x in chunk:
+                array.insert(0, x)
+    return array
+
+
+
+
