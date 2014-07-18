@@ -61,3 +61,32 @@ def compact(array):
             idx += 1
     return len(array)
 
+
+#+----------------------------------------------------------------------------+
+#| Programming Question 3: String Tokenization in Python
+#| Write a function, tokenize_string(input_string, delimiter_list) that returns 
+#| a list of strings that are separated by the delimiters.
+#| For example: 
+#|    tokenize_string("How now, Mrs. Brown Cow") 
+#|    returns ['How', 'now', 'Mrs', 'Brown', 'Cow']
+#+----------------------------------------------------------------------------+
+def tokenize_string(input_string, delimiter):
+    """
+    Tokenizes a string using a single delimiter character.
+    """
+    return input_string.split(delimiter)
+
+
+def tokenize_string2(input_string, delimiter_list):
+    """
+    Tokenizes a string using a list of delimiter characters.
+    """
+    buff, tknz = [], input_string.split(delimiter_list[0])
+    for c in delimiter_list[1:]:
+        for t in tknz:
+            # split and remove white space
+            buff.extend([x for x in t.split(c) if x.strip()])
+        tknz = buff
+        buff = []
+    return tknz
+

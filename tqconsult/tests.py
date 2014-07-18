@@ -37,7 +37,25 @@ class Test(unittest.TestCase):
         result = solutions.compact(array)
         self.assertEqual(count, result)
         self.assertListEqual(array, expected)
-
-
+    
+    
+    @unpack
+    @data(["How now, Mrs. Brown Cow", " ", ["How","now,","Mrs.","Brown","Cow"]],
+          ["How now, Mrs. Brown Cow", ",", ["How now", " Mrs. Brown Cow"]],
+          ["How now, Mrs. Brown Cow", ".", ["How now, Mrs", " Brown Cow"]])
+    def test_tokenize_string(self, input_string, delimiter, expected):
+        result = solutions.tokenize_string(input_string, delimiter)
+        self.assertListEqual(result, expected)
+    
+    
+    @unpack
+    @data(["How now, Mrs. Brown Cow", [".", ","], ["How now"," Mrs"," Brown Cow"]],
+          ["How now, Mrs. Brown Cow", [" ", ".", ","], ["How","now","Mrs","Brown","Cow"]])
+    def test_tokenize_string2(self, input_string, delimiter, expected):
+        result = solutions.tokenize_string2(input_string, delimiter)
+        self.assertListEqual(result, expected)
+    
+    
+    
 if __name__ == "__main__":
     unittest.main()
