@@ -114,5 +114,28 @@ def rotate(array, npos):
     return array
 
 
-
+#+----------------------------------------------------------------------------+
+#| Programming Question 5: Least Common Multiple in Python 
+#| The least common multiple of a set of integers is the smallest positive 
+#| integer that is a multiple of all of the integers in the set.Write a 
+#| function that takes an array of integers and efficiently calculates and 
+#| returns the LCM.
+#+----------------------------------------------------------------------------+
+def lcm(array):
+    """
+    Returns the lease common multiple of the set of integers in array.
+    """
+    i, repo = 0, {}
+    while i < 10000:    # prevents endless loop?
+        i += 1
+        for n in array:
+            multiple = n * i
+            if not repo.has_key(multiple):
+                repo[multiple] = 1
+            else:
+                repo[multiple] += 1
+                if repo[multiple] == len(array):
+                    return multiple                
+    
+    
 

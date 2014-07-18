@@ -70,6 +70,17 @@ class Test(unittest.TestCase):
         self.assertListEqual(result, expected)
     
     
+    @unpack
+    @data([[1,2,3], 6], 
+          [[4,5], 20],
+          [[4,6,8], 24])
+    def test_lcm(self, array, lcm):
+        result = solutions.lcm(array)
+        self.assertEqual(result, lcm)
+    
+    
     
 if __name__ == "__main__":
     unittest.main()
+    
+    
